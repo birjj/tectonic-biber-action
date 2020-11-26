@@ -1,0 +1,25 @@
+name: Tectonic and Biber
+description: Compile LaTeX documents using Tectonic and Biber
+author:
+branding:
+  icon: file-text
+  color: orange
+inputs:
+  files:
+    description: The LaTeX files to compile
+    required: true
+  tectonic_args:
+    description: Arguments to pass to Tectonic when compiling
+  biber_args:
+    description: Arguments to be passed to the Biber engine when compiling
+  tectonic_pre_args:
+    description: Arguments to pass to Tectonic when compiling the first time, before running Biber
+    default: "--keep-intermediates --reruns 0"
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.files }}
+    - ${{ inputs.tectonic_pre_args }}
+    - ${{ inputs.biber_args }}
+    - ${{ inputs.tectonic_args }}
