@@ -37,7 +37,7 @@ while IFS= read -r f; do
     fi
 
     # finally compile
-    target=$(basename -- "$f")
+    target="${f%.*}"
     info "Compiling $target"
     tectonic $tectonic_pre_args $target.tex
     if [[ -f "$target.bcf" ]]; then
