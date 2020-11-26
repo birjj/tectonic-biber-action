@@ -23,6 +23,7 @@ jobs:
       - name: Semantic release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DRY_RUN: ${{ github.event.inputs.dry_run }}
         run: |
           npm install semantic-release @semantic-release/github
-          npx ${${{ github.event.inputs.dry_run }}:+--dry-run} semantic-release
+          npx ${DRY_RUN:+--dry-run} semantic-release
