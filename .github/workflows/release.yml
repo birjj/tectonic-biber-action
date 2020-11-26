@@ -26,4 +26,4 @@ jobs:
           DRY_RUN: ${{ github.event.inputs.dry_run }}
         run: |
           npm install semantic-release @semantic-release/github
-          npx ${DRY_RUN:+--dry-run} semantic-release
+          npx semantic-release ${DRY_RUN:+--dry-run}
