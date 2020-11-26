@@ -18,8 +18,3 @@ inputs:
 runs:
   using: docker
   image: Dockerfile
-  args:
-    - ${{ inputs.files }}
-    - ${{ inputs.tectonic_pre_args }}
-    - ${{ inputs.biber_args }}
-    - ${{ inputs.tectonic_args }}

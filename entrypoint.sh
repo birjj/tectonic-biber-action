@@ -13,14 +13,17 @@ error() {
     exit 1
 }
 
-files="${1}"
-tectonic_pre_args="${2}"
-biber_args="${3}"
-tectonic_args="${4}"
+files="$INPUT_FILES"
+tectonic_pre_args="$INPUT_TECTONIC_PRE_ARGS"
+biber_args="$INPUT_TECTONIC_BIBER_ARGS"
+tectonic_args="$INPUT_TECTONIC_ARGS"
 
 # check that input is valid
 if [[ -z "$files" ]]; then
     error "Input files are missing."
+fi
+if [[ -z "$tectonic_pre_args" ]]; then
+    tectonic_pre_args="--keep-intermediates --reruns 0"
 fi
 
 # execute on all files
