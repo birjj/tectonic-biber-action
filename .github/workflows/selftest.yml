@@ -23,11 +23,12 @@ jobs:
             test/multiple/file3.tex
       - name: Verify PDF files
         run: |
-          cmp test/simple/simple.pdf test/simple/simple.expected.pdf
-          cmp test/bib/bib.pdf test/bib/bib.expected.pdf
-          cmp test/multiple/file1.pdf test/multiple/file1.expected.pdf
-          cmp test/multiple/file2.pdf test/multiple/file2.expected.pdf
-          cmp test/multiple/file3.pdf test/multiple/file3.expected.pdf
+          sudo apt-get install poppler-utils
+          cmp <(pdftotext test/simple/simple.pdf -) <(pdftotext test/simple/simple.expected.pdf -)
+          cmp <(pdftotext test/bib/bib.pdf -) <(pdftotext test/bib/bib.expected.pdf -)
+          cmp <(pdftotext test/multiple/file1.pdf -) <(pdftotext test/multiple/file1.expected.pdf -)
+          cmp <(pdftotext test/multiple/file2.pdf -) <(pdftotext test/multiple/file2.expected.pdf -)
+          cmp <(pdftotext test/multiple/file3.pdf -) <(pdftotext test/multiple/file3.expected.pdf -)
       - name: Upload failed artifacts
         uses: actions/upload-artifact@master
         if: ${{ failure() }}
