@@ -28,3 +28,11 @@ jobs:
           cmp test/multiple/file1.pdf test/multiple/file1.expected.pdf
           cmp test/multiple/file2.pdf test/multiple/file2.expected.pdf
           cmp test/multiple/file3.pdf test/multiple/file3.expected.pdf
+      - name: Upload failed artifacts
+        uses: actions/upload-artifact@master
+        if: ${{ failure() }}
+        with:
+          name: artifacts
+          path: |
+            test/**/*.pdf
+            !test/**/*.expected.pdf

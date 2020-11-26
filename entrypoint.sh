@@ -3,7 +3,7 @@
 # utility functions
 set -e
 info() {
-    echo -e "\033[1;34m1$1\033[0m"
+    echo -e "\033[1;34m$1\033[0m"
 }
 warn() {
     echo "::warning :: $1"
