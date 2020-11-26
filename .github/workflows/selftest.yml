@@ -1,0 +1,30 @@
+name: Test Action
+on: [push, pull_request]
+jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Compile simple
+        uses: ./
+        with:
+          files: test/simple/simple.tex
+      - name: Compile bib
+        uses: ./
+        with:
+          files: test/bib/bib.tex
+      - name: Compile multiple
+        uses: ./
+        with:
+          files: |
+            test/multiple/file1.tex
+            test/multiple/file2.tex
+            test/multiple/file3.tex
+      - name: Verify PDF files
+        run: |
+          cmp test/simple/simple.pdf test/simple/simple.expected.pdf
+          cmp test/bib/bib.pdf test/bib/bib.expected.pdf
+          cmp test/multiple/file1.pdf test/multiple/file1.expected.pdf
+          cmp test/multiple/file2.pdf test/multiple/file2.expected.pdf
+          cmp test/multiple/file3.pdf test/multiple/file3.expected.pdf
