@@ -2,8 +2,8 @@ name: Release
 on:
   workflow_dispatch:
     inputs:
-      publish:
-        description: "Publish"
+      dry_run:
+        description: "Dry run"
         required: false
 
 jobs:
@@ -24,4 +24,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npm install semantic-release @semantic-release/github
-          npx ${${{ github.event.inputs.publish }}:+--dry-run} semantic-release
+          npx ${${{ github.event.inputs.dry_run }}:+--dry-run} semantic-release
