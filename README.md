@@ -6,4 +6,28 @@ Big thanks to Wtfjoke for [the Docker image](https://hub.docker.com/r/dxjoke/tec
 
 ## Examples
 
-### Compile single LaTeX document
+### Compile files and upload them as artifacts
+
+```yml
+name: My action
+on: [push, pull_request]
+jobs:
+  compile_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Compile
+        uses: birjolaxew/tectonic-biber-action@master
+        with:
+          files: |
+            my/file1.tex
+            file2.tex
+      - name: Upload PDF
+        uses: actions/upload-artifact@master
+        with:
+          name: pdf
+          path: |
+            my/file1.pdf
+            file2.pdf
+```
