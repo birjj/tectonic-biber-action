@@ -1,4 +1,4 @@
-name: Tectonic and Biber
+name: Compile LaTeX (Tectonic + Biber)
 description: Compile LaTeX documents using Tectonic and Biber
 author:
 branding:
