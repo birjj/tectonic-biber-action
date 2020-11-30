@@ -23,6 +23,7 @@ jobs:
             test/multiple/file3.tex
       - name: Verify PDF files
         run: |
+          sudo apt-get update
           sudo apt-get install poppler-utils
           cmp <(pdftotext test/simple/simple.pdf -) <(pdftotext test/simple/simple.expected.pdf -)
           cmp <(pdftotext test/bib/bib.pdf -) <(pdftotext test/bib/bib.expected.pdf -)
