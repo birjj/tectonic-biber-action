@@ -1,4 +1,8 @@
-# Tectonic + Biber GitHub Action
+# [DEPRECATED] Tectonic + Biber GitHub Action
+
+<p align="center">
+  <b>!!! Deprecated in favor of the superior <a href="https://github.com/WtfJoke/setup-tectonic">Wtfjoke/setup-tectonic</a> action !!!</b>
+</p>
 
 A GitHub Action which compiles a LaTeX document using [Tectonic](https://tectonic-typesetting.github.io/en-US/) and [Biber](http://biblatex-biber.sourceforge.net/).
 
